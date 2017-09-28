@@ -1,0 +1,2 @@
+s = "aaa"
+puts s
