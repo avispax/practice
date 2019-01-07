@@ -9,13 +9,17 @@ n = int(input())
 s = input().strip().split(" ")
 print(str(s[0]))
 print(int(s[1]))
-# 1行づつ無限input : break必須
+# 配列に格納 : 1行づつ無限input : break必須
 l = []
 while True:
     try:
         l.append(int(input().strip()))
     except EOFError:
         break
+# 配列に格納:固定ループ
+s = []
+for i in range(3):
+    s.append(input())
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 # paiza D048 台風の間隔
 l = []
@@ -742,10 +746,7 @@ else:
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 # paiza D079:同じ文字
 s = input()
-if len(s) == s.count(s[0]):
-    print("NG")
-else:
-    print("OK")
+print("NG" if len(s) == s.count(s[0]) else "OK")
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 # paiza D096:含んではいけない文字
 s = input()
@@ -758,26 +759,426 @@ else:
 # paiza D093:切りの良い番号
 s = input()
 
-if len(s) == s.count(s[0]):
-    print(s)
-else:
-    print("No")
+print(s if len(s) == s.count(s[0]) else "No")
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 # なぜかC#版
-using System;
-using System.Linq;
+using System
+using System.Linq
 
 public class aa{
     public static void Main(){
 
-        String s = "11112";
-        int count = s.Count(c => c == s[0]);
-        
-        if ( s.Length != count ) {
-            s = "No";
+        String s = "11112"
+        int count = s.Count(c=> c == s[0])
+
+        if (s.Length != count) {
+            s = "No"
         }
-        
-        Console.WriteLine(s);        
+
+        Console.WriteLine(s)
     }
 }
-http: // skywing.hatenablog.com/entry/2018/06/09/095645
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D100:区切り文字の統一
+s = input()
+c1 = s.count('-')
+c2 = s.count('_')
+if c1 < c2 or c1 == c2:
+    s = s.replace('-', '_')
+else:
+    s = s.replace('_', '-')
+
+print(s)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D090:下一桁はいくつ
+# coding: utf-8
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+n = sum(s)
+print(str(n)[-1])
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D094:犬派か猫派か
+# coding: utf-8
+s = []
+for i in range(3):
+    s.append(input())
+
+print("cat" if s.count("cat") > s.count("dog") else "dog")
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D108:薬の効き目
+# coding: utf-8
+import math
+n = int(input())
+print(str(math.ceil(24 / n)))
+
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D078:入学試験
+# coding: utf-8
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+
+border = int(input())
+
+avr = sum(s) / len(s)
+
+print("pass" if avr >= border else "failure")
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D074:時間の表記
+# coding: utf-8
+n = int(input())
+print(n % 24)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D083:ブラックジャック
+# coding: utf-8
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+n = sum(s)
+
+print("HIT" if n < 16 else "STAND")
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D087:文字をくっつける
+# coding: utf-8
+s = ""
+for i in range(int(input())):
+    s += input()
+
+print(s)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D087:文字をくっつける
+# coding: utf-8
+s = input()
+print(s[::-1])
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D097:梅雨入りの予想
+# coding: utf-8
+s = input().rstrip().split(' ')
+
+print("yes" if s.count('1') >= 5 else "no")
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D089:数字の取得
+# coding: utf-8
+s = input()
+
+ans = ""
+for x in s:
+    if x.isnumeric():
+        ans += x
+    else:
+        break
+
+print(ans)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D110:3つの数字
+# coding: utf-8
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+
+ans = s[0] * s[1] * s[2]
+print(ans)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D075:足りないカード
+# coding: utf-8
+s = []
+for i in range(4):
+    s.append(int(input()))
+
+print(15 - sum(s))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D111:文字を切り詰める
+# coding: utf-8
+n = int(input())
+s = input()
+print(s[:n])
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D105:長さの一致
+# coding: utf-8
+s1 = input()
+s2 = input()
+
+print("Yes" if len(s1) == len(s2) else "No")
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D104:送料の計算
+n = int(input())
+print(1000 if n < 10 else 150*n)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D107:文字列を囲う
+# coding: utf-8
+s = input()
+s1 = input()
+
+print(s1 + s + s1)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D099:短冊づくり
+# coding: utf-8
+s = input()
+for x in s:
+    print(x)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D091:花粉の予報
+s = input().rstrip().split(' ')
+print(s.count('1') + s.count('2'))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D077:計算機の表示
+# coding: utf-8
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+v = s[0] * s[1]
+print(v if v < 10000 else "NG")
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D088:温度差の計算
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+
+print(s[0] - s[1])
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D106:割った余り
+# coding: utf-8
+s = int(input())
+s1 = int(input())
+
+print(s % s1)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D102:運賃の計算
+# coding: utf-8
+s = int(input())
+print(100 + s * 10)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D081: 【キャンペーン問題】家族で分ける
+# coding: utf-8
+f = int(input())
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+
+print(s[0] * s[1] % f)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D095:ジュースの分配
+s = int(input())
+s1 = int(input())
+
+print(s // s1)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D080:忘年会の予算
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+
+print(6000 * s[0] + 4000 * s[1])
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D080:忘年会の予算
+s = input().rstrip().split(' ')
+s = list(map(int, s))  # 数値変換
+
+print(s[0] * s[1])
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C043:使用回数の調査
+# coding: utf-8
+import collections
+
+n = int(input())
+m = input().strip().split(" ")
+m = list(map(int, m))   # int変換
+
+c = collections.Counter(m)
+
+mc = c.most_common()
+
+mx = mc[0][1]
+l = []
+
+for x in mc:
+    if x[1] < mx:
+        break
+    else:
+        l.append(x[0])
+
+l.sort()
+
+print(" ".join([str(x) for x in l]))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C030:白にするか黒にするか
+# coding: utf-8
+s = input().strip().split(" ")
+s = list(map(int, s))   # int変換
+
+while True:
+    try:
+        a = input().strip().split(" ")
+        a = list(map(int, a))   # int変換
+        print(" ".join([str("1" if x >= 128 else "0") for x in a]))
+        
+    except EOFError:
+        break
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C054:【ぱいじょ！コラボ問題】スピード違反の取り締まり
+# coding: utf-8
+n = input().strip().split(" ")
+n = list(map(int, n))   # int変換
+
+t = []
+p = []
+while True:
+    try:
+        a = input().strip().split(" ")
+        a = list(map(int, a))   # int変換
+        t.append(a[0])
+        p.append(a[1])
+
+    except EOFError:
+        break
+
+ans = "NO"
+
+for i in range(n[0]):
+    if i == 0:
+        continue
+
+    if (p[i] - p[i-1]) / (t[i] - t[i-1]) > n[1]:
+        ans = "YES"
+        break
+
+print(ans)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C045:ページネーション
+# coding: utf-8
+n = input().strip().split(" ")
+n = list(map(int, n))   # int変換
+
+x = -(-n[0] // n[1])    # 切り上げ
+
+if x >= n[2]:
+
+    # 配列の作成
+    l = []
+    for i in range(n[1]):
+        a = (i+1) + ((n[2] - 1) * n[1])
+        l.append(a)
+        if a == n[0]:
+            break
+
+    print(" ".join([str(x) for x in l]))
+
+else:
+    print("none")
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C038:お菓子の分配
+n = input().strip().split(" ")
+n = list(map(int, n))   # int変換
+
+ans = [0, 1001, 1001]  # No, mod, q
+
+for i in range(n[0]):
+    a = int(input())
+    m = n[1] % a
+    q = n[1] // a
+
+    if (m < ans[1])or (m == ans[1] and q < ans[2]):
+        ans[0] = i + 1
+        ans[1] = m
+        ans[2] = q
+
+print(ans[0])
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C031:時差を求めたい
+l = {}
+for i in range(int(input())):
+    a = input().strip().split(" ")
+    l[a[0]] = int(a[1])
+
+c = input().strip().split(" ")
+name = c[0]
+t = c[1].strip().split(":")
+t = list(map(int, t))   # int変換
+
+for aa in l.items():
+    m = 0
+    if l[name] < aa[1]:
+        m = aa[1] - l[name]
+
+    else:
+        m = l[name] - aa[1]
+        m = 24-m
+
+    m = t[0] + m
+    
+    if m >= 24:
+        m -= 24
+
+    print(format(m, '02') + ":" + format(t[1], '02'))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C052:ゲームの画面
+w = input().strip().split(" ")
+w = list(map(int, w))   # int変換
+
+n = input().strip().split(" ")
+n = list(map(int, n))   # int変換
+
+ful = w[0] * w[1]
+used = (w[0] - abs(n[0])) * (w[1] - abs(n[1]))
+
+print(ful - used)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D113:初日の出
+t = input().strip().split(":")
+t = list(map(int, t))   # int変換
+
+x = t[0] - 8
+
+if x < 0:
+    x = 24 + x
+
+print(str(x) + ":" + str(t[1]))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza D112:工場の生産力
+n = int(input())
+m = int(input())
+
+print(n * m)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C044:手の組み合わせ
+# coding: utf-8
+n = int(input())
+
+h = []
+for i in range(n):
+    h.append(input())
+
+h = sorted(set(h))
+
+if len(h) == 2:
+    if h[0] == 'paper':
+        if h[1] == 'rock':
+            print(h[0])
+        else:
+            print(h[1])
+    else:
+        print(h[0])
+
+else:
+    print("draw")
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C029:旅行の計画
+t = input().strip().split(" ")
+t = list(map(int, t))   # int変換
+
+temp = []
+for i in range(t[0]):
+    a = input().strip().split(" ")
+    a = list(map(int, a))   # int変換
+    temp.append(a)
+
+h = [x[1] for x in temp]
+
+temp_m = 101
+d = [0, 1]
+
+for i in range(t[1]-1, t[0]):
+    j = i + 1
+
+    m = sum(h[(j-t[1]):j]) / t[1]
+
+    if m < temp_m:
+        temp_m = m
+        d = [j-t[1], i]
+
+print(str(temp[d[0]][0]) + " " + str(temp[d[1]][0]))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# paiza C040:【ロジサマコラボ問題】背比べ
