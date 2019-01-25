@@ -1181,4 +1181,93 @@ for i in range(t[1]-1, t[0]):
 
 print(str(temp[d[0]][0]) + " " + str(temp[d[1]][0]))
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-# paiza C040:【ロジサマコラボ問題】背比べ
+# エンジニアが死滅した世界 : 荒れ果てた警察署
+t = input().strip().split(" ")
+t = list(map(int, t))   # int変換
+
+ts = t[0] + t[1]
+ans = ts % 10
+print(ans)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : 荒れ果てたオフィス
+n = int(input())
+
+for i in range(n):
+    a = input().strip().split(" ")
+    if (a[1] == '3'):
+        print(a[0])
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : アンドロイドの生産工場
+s = input()
+
+ans = ""
+for i in range(0, len(s), 2):
+    ans += s[i]
+
+print(ans)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : 錆びついた電波塔
+n = int(input())
+t = input().strip().split(" ")
+t = list(map(int, t))   # int変換
+
+print(len([i for i in t if 5 < i]))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : お金が引き出せない銀行
+n = int(input())
+w = int(input())
+
+a = n - w
+
+print("error" if a < 0 else a)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : 荒れ果てたショップ
+t = input().strip().split(" ")
+t = list(map(int, t))   # int変換
+
+for x in range(t[1], t[2]+1):
+    print(str(x).zfill(t[0]))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : 機械の総合病院
+s = input()
+
+def f(s):
+    if len(s) < 6:
+        return "Invalid"
+
+    if s.isdecimal():
+        return "Invalid"
+
+    if s.isalpha():
+        return "Invalid"
+
+    for i in range(0, len(s)-2):
+        ss = s[i:i+3]
+        if ss.count(ss[0]) == 3:
+            return "Invalid"
+
+    return "Valid"
+
+print(f(s))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : 学べない学校
+n = int(input())
+
+a = 0
+b = 0
+
+for i in range(n):
+    t = input().strip().split(" ")
+
+    if t[0] == t[1] :
+        continue
+    
+    if (t[0] == "g" and t[1] == "c") or \
+        (t[0] == "c" and t[1] == "p") or \
+        (t[0] == "p" and t[1] == "g"):
+        a += 1
+    else :
+        b += 1
+
+print(a)
+print(b)
