@@ -1271,3 +1271,25 @@ for i in range(n):
 
 print(a)
 print(b)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : 高層タワー
+n = int(input())
+ans = ""
+
+def f(ans , s):
+    for i in range(0, len(s)):
+        ss = s[:len(s)-i]
+        s2 = ans[-len(s) + i:]
+        
+        if ss == s2:
+            return len(s)-i
+
+for i in range(n):
+    s = input().strip()
+    m = f(ans, s)
+    if m is None:
+        ans += s
+    else:
+        ans += s[m:]
+        
+print(ans)
