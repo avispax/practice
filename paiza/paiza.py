@@ -427,10 +427,10 @@ for i in range(int(input())):
     c = list(map(int, s))  # int変換
 
     ans = "Low"
-    if c[0] < p[0]
-    ans = "High"
-    elif c[0] == p[0] and p[1] < c[1]
-    ans = "High"
+    if c[0] < p[0]:
+        ans = "High"
+    elif c[0] == p[0] and p[1] < c[1]:
+        ans = "High"
 
     print(ans)
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -1231,6 +1231,7 @@ for x in range(t[1], t[2]+1):
 # エンジニアが死滅した世界 : 機械の総合病院
 s = input()
 
+
 def f(s):
     if len(s) < 6:
         return "Invalid"
@@ -1259,14 +1260,14 @@ b = 0
 for i in range(n):
     t = input().strip().split(" ")
 
-    if t[0] == t[1] :
+    if t[0] == t[1]:
         continue
     
     if (t[0] == "g" and t[1] == "c") or \
         (t[0] == "c" and t[1] == "p") or \
         (t[0] == "p" and t[1] == "g"):
         a += 1
-    else :
+    else:
         b += 1
 
 print(a)
@@ -1276,7 +1277,8 @@ print(b)
 n = int(input())
 ans = ""
 
-def f(ans , s):
+
+def f(ans, s):
     for i in range(0, len(s)):
         ss = s[:len(s)-i]
         s2 = ans[-len(s) + i:]
@@ -1292,4 +1294,52 @@ for i in range(n):
     else:
         ans += s[m:]
         
+print(ans)
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : 砂漠の公園
+n = int(input().strip())
+
+ans = [0, 0, 0, 0, 0]
+
+for i in range(n):
+    s = input().strip()
+    temp = [0, 0, 0, 0, 0]
+
+    temp[0] = i + 1
+    temp[2] = s.count("W")
+    temp[3] = s.count("D")
+    temp[4] = s.count("L")
+    temp[1] = temp[2] * 2 + temp[3]
+
+    if ans[1] < temp[1]:
+        ans = temp
+
+    # omake
+    if ans[1] == (n-1) * 2:
+        break
+
+print(" ".join([str(x) for x in ans]))
+# ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+# エンジニアが死滅した世界 : 隔離された街のゲート
+n = input().strip().split(" ")
+n = list(map(int, n))   # int変換
+
+pos = [0, 0]
+ans = "valid"
+
+for i in range(n[2]):
+    c = input().strip()
+    if c == "U":
+        pos[0] += 1
+    elif c == "D":
+        pos[0] -= 1
+    elif c == "L":
+        pos[1] -= 1
+    elif c == "R":
+        pos[1] += 1
+
+    if pos[0] < 0 or n[0]-1 < pos[0] or pos[1] < 0 or n[1]-1 < pos[1]:
+        ans = "invalid"
+        break
+
 print(ans)
