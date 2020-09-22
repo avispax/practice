@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="lesson1.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue : 1-3 : テンプレート構文</title>
+</head>
+
+<body>
+
+    <div id="l1">
+        <h2>生のHTML</h2>
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html : <span v-html="rawHtml"></span></p>
+
+        <h2>属性</h2>
+        <div v-bind:id="dynamicId">dynamicId</div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+    </div>
+
+    <script src="lesson1.js"></script>
+
+</body>
+
+</html>
