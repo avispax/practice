@@ -22,4 +22,13 @@ dir「Vue」に色々。
 
 ### 1-3 : [テンプレート構文](https://jp.vuejs.org/v2/guide/syntax.html)
 
+1. 生のHTMLとか属性とか。動的引数はよくわからん。
+2. 省略記法
 
+### 1-4 : [算出プロパティとウォッチャ](https://jp.vuejs.org/v2/guide/computed.html)
+
+1. 基本的な例、算出プロパティ（computed）、computedのgetとset。
+
+### 1-5 : [クラスとスタイルのバインディング](https://jp.vuejs.org/v2/guide/class-and-style.html)
+
+1. HTMLクラスのバインディング。書き方いろいろ。

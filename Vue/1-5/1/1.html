@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="1.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue : 1-5 : クラスとスタイルのバインディング</title>
+</head>
+
+<body>
+
+    <div id="l1">
+        <h2>オブジェクト構文 その1 と その2</h2>
+        <div class="static" v-bind:class="{ fontRed: isRed }">
+            もともとあるclass（背景色） + l1のデータプロパティ isRed の真偽性によって決まる状況。
+            <input type="checkbox" v-model="isRed">{{ isRed }}
+        </div>
+
+        <h2>オブジェクト構文 その3 : インラインじゃない書き方もできるよ例1 - data部に記載。</h2>
+        <div class="static" v-bind:class="classObject">こんな感じで。1.js見てね。This is italic.</div>
+
+        <h2>オブジェクト構文 その4 : インラインじゃない書き方もできるよ例2 - 算出プロパティにバインド。</h2>
+        <div class="static" v-bind:class="classObject2">実際にはたぶんこの使い方が一般的だろうね。とのこと。</div>
+    </div>
+
+    <script src="1.js"></script>
+
+</body>
+
+</html>
