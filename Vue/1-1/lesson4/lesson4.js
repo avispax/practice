@@ -2,7 +2,7 @@
 // propsはカスタムプロパティで、1アイテムずつって感じ。
 Vue.component('todo-item', {
     props: ['todo'],
-    template: '<li> {{ todo.text }} -- {{ todo.id }}<li>'
+    template: '<li> {{ todo.text }} -- {{ todo.id }}</li>'
 })
 
 // 今回のこのクラスは、どうやらコンポーネントの適用範囲を示すもの？ htmlのl6タグの範囲内でテンプレートが有効になるんだよね。

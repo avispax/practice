@@ -13,18 +13,45 @@
 
 <body>
 
-    <div id="l1">
-        <h2>オブジェクト構文 その1 と その2</h2>
-        <div class="static" v-bind:class="{ fontRed: isRed }">
+    <div id="el1">
+        <h1>HTMLクラスのバインディング</h1>
+        <h2>オブジェクト構文</h2>
+        <h3>その1（isxx的に判定） と その2（プレーンなクラスと共存「class=static」）</h3>
+        <div v-bind:class="{ fontRed: isRed }" class="static">
             もともとあるclass（背景色） + l1のデータプロパティ isRed の真偽性によって決まる状況。
             <input type="checkbox" v-model="isRed">{{ isRed }}
         </div>
 
-        <h2>オブジェクト構文 その3 : インラインじゃない書き方もできるよ例1 - data部に記載。</h2>
+        <h3>その3 : インラインじゃない書き方もできるよ例1 - data部に記載。</h2>
         <div class="static" v-bind:class="classObject">こんな感じで。1.js見てね。This is italic.</div>
 
-        <h2>オブジェクト構文 その4 : インラインじゃない書き方もできるよ例2 - 算出プロパティにバインド。</h2>
+        <h3>オブジェクト構文 その4 : インラインじゃない書き方もできるよ例2 - 算出プロパティにバインド。</h2>
         <div class="static" v-bind:class="classObject2">実際にはたぶんこの使い方が一般的だろうね。とのこと。</div>
+
+        <h2>配列構文</h2>
+        <h3>その1: v-bind:class に 配列風の記載ができるよ</h3>
+        <div class="static" v-bind:class="[array1Class, array2Class]">
+            とりあえず赤文字 + 下線だよ。
+        </div>
+
+        <h3>その2: タグの配列内にも三項演算子を書けば使えるぜ。trueで黄緑クラスを直接、falseでアンダーラインをクラス変数。</h3>
+        <div class="static" v-bind:class="[isFontColor ? 'fontGreenYellow' : array2Class ]">
+            こんどは 黄緑 もしくは 下線 だよ。<br>
+            この例では、htmlクラス名を直接書くか、Vueの変数にバインド済みの変数名（=クラス名）を使うかって感じ。
+        </div>
+
+        <h3>その3: 配列構文とオブジェクト構文の合体</h3>
+        <div class="static" v-bind:class="[{ fontBlue : isFontColor }, 'font-italic' ]">
+            こんどは 青文字の有無 + italic だよ。<br>
+            青文字部分をifでアレしてて、常時出すitalicは2番目の配列さー。
+        </div>
+
+        <h2>コンポーネントにおける挙動</h2>
+        <h3>その1 : コンポーネントに書いたClass属性はroot要素になるんで変更不可っす。</h3>
+        <my-comp class="fontRed"></my-comp>
+
+        <h3>その2 : クラスをベタに書けるってことは、ここまでやったバインドもできるってことよ。中の日本語は変わんないけど。</h3>
+        <my-comp v-bind:class="{ fontGreenYellow : isFontColor }"></my-comp>
     </div>
 
     <script src="1.js"></script>

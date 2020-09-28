@@ -31,4 +31,5 @@ dir「Vue」に色々。
 
 ### 1-5 : [クラスとスタイルのバインディング](https://jp.vuejs.org/v2/guide/class-and-style.html)
 
-1. HTMLクラスのバインディング。書き方いろいろ。
+1. HTMLクラスのバインディング
+2. 
