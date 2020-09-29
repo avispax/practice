@@ -32,4 +32,9 @@ dir「Vue」に色々。
 ### 1-5 : [クラスとスタイルのバインディング](https://jp.vuejs.org/v2/guide/class-and-style.html)
 
 1. HTMLクラスのバインディング
-2. 
+2. インラインスタイルのバインディング
+
+### 1-6 : [条件付きレンダリング](https://jp.vuejs.org/v2/guide/conditional.html)
+
+1. v-if
+2. v-show

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="1.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue : 1-6 : 条件付きレンダリング</title>
+</head>
+
+<body>
+
+    <div id="el1">
+        <h1>v-if</h1>
+        <h2>基本 : if & else</h2>
+        <input type="checkbox" v-model="isAAA">isAAA = {{ isAAA }}</input>
+        <div v-if="isAAA">Vue is awesome!</div>
+        <div v-else>Oh no .</div>
+        
+        <h2>テンプレート（template=非表示ラッパーHTML5から）でのv-ifによる条件グループ</h2>
+        <input type="checkbox" v-model="isOK">isOK = {{ isOK }}</input>
+        <template v-if="isOK">
+            <div>やっほーう。OK！</div>
+            <div>なんかDiv</div>
+            <div>Divその2</div>
+        </template>
+
+        <h2>v-else と v-else-if</h2>
+        <select v-model="selected">
+            <option v-for="op in ops" v-bind:value="op.value">
+                {{ op.text }}
+            </option>
+        </select>
+        <div>選んだ値 : {{ selected }}</div>
+        <div v-if="selected === 'a'">aaa</div>
+        <div v-else-if="selected === 'b'">bbb</div>
+        <div v-else>ccc</div>
+
+        <h2>keyによる再利用可能な要素の制御</h2>
+        <div><input type="checkbox" v-model="loginType">{{ loginType }}</div>
+        <template v-if="loginType">
+            <label>UserName : </label>
+            <input placeholder="uuuuuuuuuuuuuuuuuuu" key="uuuuuuuuuuuuuu">
+        </template>
+        <template v-else>
+            <label>E-Mail : </label>
+            <input placeholder="eeeeeeeeeeeeeeee" key="eeeeeeeeeee">
+        </template>
+
+        <h1>v-show</h1>
+        <div><input type="checkbox" v-model="isBBB">{{ isBBB }}</div>
+        <div v-show="isBBB">html的にはstyleのdisplayをoffにしますよー。v-ifはガチでhtmlを書き換えてる。</div>
+
+    </div>
+
+    <script src="1.js"></script>
+
+</body>
+
+</html>

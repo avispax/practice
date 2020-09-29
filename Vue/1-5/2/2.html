@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="2.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue : 1-5 : クラスとスタイルのバインディング</title>
+</head>
+
+<body>
+
+    <div id="el2">
+        <h1>インラインスタイルのバインディング</h1>
+        <h2>オブジェクト構文</h2>
+        <h3>その1 : まずは基本的な使用。ただの別名。</h3>
+        <div v-bind:style="{ color: myColor }">
+            赤文字。myColorは変数名で、2.js定義の"red"とイコールです。
+        </div>
+
+        <h3>その2 : オブジェクトに囲っちまおう</h3>
+        <div v-bind:style="styleObject">
+            青文字 + 13px。<br>
+            たぶんこうなると三項演算子とか、htmlクラスバインドで学んだ手法は全部使えそう。
+        </div>
+
+
+        <h2>配列構文</h2>
+        <h3>その1</h3>
+        <div v-bind:style="[ styleObject, so2 ]">
+            スタイル用オブジェクトをふたつ設定。設定が被ったら後のほうが勝つらしい。文字色 青 → 緑。
+        </div>
+
+        <h2>自動プリフィックス</h2>
+        <h3>その1</h3>
+        <div>
+            まぁ勝手にやってくれるらしい。oとかwebkitとかあのアレ。以下引用。
+            <pre>v-bind:style でベンダー接頭辞を要求される CSS プロパティを使用するとき、例えば、transform においては、Vue.js は自動的に適切な接頭辞を検出し、適用されるスタイルに追加します。</pre>
+        </div>
+
+        <h2>複数の値</h2>
+        <h3>その1</h3>
+        <div>
+            よくわからぬ。
+        </div>
+
+    </div>
+
+    <script src="2.js"></script>
+
+</body>
+
+</html>
