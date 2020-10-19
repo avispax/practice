@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="2.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue : 1-7-2 : リストレンダリング</title>
+  </head>
+
+  <body>
+    <div id="el">
+      <h1>v-for その2</h1>
+      <h2>フィルタ/ソートされた結果の表示</h2>
+
+      <div>例1 : 算出プロパティ</div>
+      <ul>
+        <li v-for="n in evenNumbers">{{ n }}</li>
+      </ul>
+
+      <div>例2 : メソッド</div>
+      <ul v-for="set in sets">
+        <li v-for="n in even(set)">{{ n }}</li>
+      </ul>
+
+      <h2>範囲付き v-for</h2>
+      <div>整数付きにできるよ。たぶんあんまり使わないけど。</div>
+      <div>
+        <span v-for="n in 10">{{ n }}</span>
+      </div>
+
+      <h2>template での v-for</h2>
+      <div>v-ifと同じことなんだけど、v-forでtemplateタグを活用できるで。</div>
+      <div>templateは描画されないっていうhtml5からの機能やで。</div>
+      <ul>
+        <template v-for="item in items">
+          <li>{{ item.msg }}</li>
+          <li class="divider" role="presentation"></li>
+        </template>
+      </ul>
+
+      <h2>v-forとv-ifは同じタグに入れて使ったらアカンよ。</h2>
+      <h3>解決策1 : フィルター済みの一覧をループでぶん回す。</h3>
+      <div>
+        我々、「item in
+        items」って書くじゃん。そこのitemsをfilteredItemsぐらいのものにしてしまおう。
+      </div>
+      <div>
+        例示しようとしたけど、これって最初のところにある「例1 :
+        算出プロパティ」っすな。そこのevenNumbersのことです。
+      </div>
+
+      <h3>
+        解決策2 :
+        そもそもループに入るかどうかの判定が必要なら、先頭にv-if付けて選別したまえ。
+      </h3>
+      <div>公式のやり方はこの例。</div>
+
+      <ul v-if="datas.length">
+        <li v-for="data in datas">{{ data.msg }}、{{data.isShow}}</li>
+      </ul>
+      <div v-else>datas[]配列の中身は空っぽなのでv-elseじゃ。</div>
+    </div>
+
+    <script src="2.js"></script>
+  </body>
+</html>
