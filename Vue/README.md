@@ -50,3 +50,4 @@ dir「Vue」に色々。
 - [日本語\_V2](https://jp.vuejs.org/v2/guide/events.html)
 
 1. 基礎、引数付き、複数呼び出し。
+2. イベント修飾子 : DOM 操作とからしい。よくわからぬ。
