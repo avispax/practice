@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="3.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <title>Vue : 1-8-3 : キー修飾子</title>
+</head>
+
+<body>
+  <div id="el">
+    <h1>イベントハンドリング</h1>
+    <h2>キー修飾子</h2>
+    <div>
+      エンターキーにのみ反応するとかできるよ。
+    </div>
+    <input @keyup.enter="doThis('aaa')">
+
+    <div><a href="KeyboardEvent.key" target="_blank">KeyboardEvent.key</a>
+      ってサイトにある表はケバブ-ケースにすることで使えるよ。例はPageDown(page-down)。</div>
+    <input @keyup.page-down="doThis('pageDown : Page-down')">
+
+    <h3>キーコード</h3>
+    <div>非推奨だけど、keycodeっていうコード値で同じことができるよ。enterは13だよ。</div>
+
+    <h2>システム修飾子キー</h2>
+    <div>↑に続けてさらに「ctrl」「alt」「shift」とか行けるよ。「meta」はmacのコマンド、winの田だよ。</div>
+    <div>Alt + c</div>
+    <input @keyup.alt.67="doThis('alt+67')">
+    <div>ctrlを押しながらclick。</div>
+    <input @click.ctrl="doThis('ctrl + click')">
+    <div>中のコードを入れ替えると動かぬという。これは公式ページのnoteにある通り、keyupとかと組み合わせて工夫が必要とのこと。</div>
+    <input @ctrl.click="doThis('ctrl + click')">
+
+    <h3>.exact 修飾子</h3>
+    <div>より正確に判定します。↑のctrl + clickは、他のキーが押されていても反応していました。</div>
+    <div>.exactは対象の2つ（ctrl+click）のみとします。</div>
+    <div>とはいえ、他のキーとは「shift」とか名のあるキーのみで、「a」とか「c」みたいなのは素通りします。</div>
+    <input @click.ctrl.exact="doThis('ctrl + click + exact')">
+
+    <h3>マウスボタンの修飾子</h3>
+    <div>left や right の判定もできるよ。下はmiddle。</div>
+    <input @click.middle="doThis('click + middle')">
+
+  </div>
+  <script src="3.js"></script>
+</body>
+
+</html>
