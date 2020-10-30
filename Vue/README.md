@@ -51,3 +51,10 @@ dir「Vue」に色々。
 
 1. 基礎、引数付き、複数呼び出し。
 2. イベント修飾子 : DOM 操作とからしい。よくわからぬ。
+3. キーとマウスの判定。
+
+### 1-9 : [フォーム入力バインディング v3 en](https://v3.vuejs.org/guide/forms.html)
+
+- [日本語\_V2](https://jp.vuejs.org/v2/guide/forms.html)
+
+1. 基本
