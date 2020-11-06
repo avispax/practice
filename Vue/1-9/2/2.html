@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="2.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <title>Vue : 1-9-2 : フォーム入力バインディング : 値のバインド</title>
+</head>
+
+<body>
+  <div id="el">
+    <h1>フォーム入力バインディング</h1>
+    <h2>値のバインド</h2>
+
+    <h3>前段</h3>
+    <div>v-modelを使うと、基本的にはstaticな文字列やtrue/falseだよね。</div>
+    <div>でも v-bind を使って工夫するとアレコレできるよ。</div>
+
+    <h2>例１ : フツーにv-modelのみの場合</h2>
+
+    <h3>ラジオとチェックボックスとセレクト</h3>
+    <input type="radio" v-model="radio" value="a" />
+    <input type="checkbox" v-model="checked" />
+    <select v-model="selected">
+      <option value="abc">ABC</option>
+    </select>
+    <div>v-modelの値を反映する : {{ radio }}, {{ checked }}, {{ selected }}</div>
+
+    <h2>値をバインドして、v-modelの中身にv-bindした値をツッコむ。</h2>
+
+    <h3>checkbox</h3>
+    <input type="checkbox" v-model="check2" true-value="yes" false-value="no" />
+    <div>value : {{ check2 }}。check2の中身はyes/noの文字が入る。</div>
+
+    <h3>radio</h3>
+    <div>
+      <input type="radio" v-model="radio2" v-bind:value="b" id="radio" />
+      <label for="r1">bbbbb</label>
+    </div>
+    <div>
+      <input type="radio" v-model="radio2" v-bind:value="c" id="radio" />
+      <label for="r2">ccccccccc</label>
+    </div>
+    <div>value : {{ radio2 }}。radio2の中身はv-bind:value="b"で定義したb1b1b1b1～みたいのを入れるなど。</div>
+
+    <h3>select</h3>
+    <select v-model="select2">
+      <option :value="{ number: 123 }">1111111111111</option>
+    </select>
+    <div>value: {{ select2 }}。option:valueのkey:value（number:123）をつっこむ。</div>
+
+    <h2>修飾子</h2>
+    <h3>.lazy</h3>
+    <input v-model.lazy="msg1" />
+    <div>value : {{ msg1 }}。inputじゃなくてchangeイベントに反応するよ（エンター押すとか）</div>
+    <h4>忘れた人ように普通の↓</h4>
+    <input v-model="msgx" />
+    <div>value : {{ msgx }}</div>
+
+    <h3>.number</h3>
+    <input type="number" v-model.number="msg2" />
+    <div>value : {{ msg2 }}。たまに文字列を返すみたいな挙動もするブラウザがあったりとか。 </div>
+
+    <h3>.trim</h3>
+    <input v-model.trim="msg3" />
+    <div>value : {{ msg3 }}</div>
+
+    <h2>コンポーネントのv-model</h2>
+    なんか記載なくない？
+
+  </div>
+  <script src="2.js"></script>
+</body>
+
+</html>

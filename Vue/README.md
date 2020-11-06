@@ -4,9 +4,9 @@
 
 ## 1 : Vue 実験
 
-### 1-1 : [はじめに](https://jp.vuejs.org/v2/guide/index.html)
-
 dir「Vue」に色々。
+
+### 1-1 : [はじめに](https://jp.vuejs.org/v2/guide/index.html)
 
 1. 宣言型レンダリングのところ。まぁまずは動かしてみる。ちょっと bind もしてみた。span にタイトル付けて。f12 でわかるよ。
 2. 条件分岐とループのところ。v-if と forLoop。
@@ -57,4 +57,5 @@ dir「Vue」に色々。
 
 - [日本語\_V2](https://jp.vuejs.org/v2/guide/forms.html)
 
-1. 基本
+1. 基本 ～ フォームとかの値を変数（v-model）に入れたり。
+2. 値のバインドと修飾子。値のバインドは応用が多そう。頭を柔らかく。
