@@ -59,3 +59,9 @@ dir「Vue」に色々。
 
 1. 基本 ～ フォームとかの値を変数（v-model）に入れたり。
 2. 値のバインドと修飾子。値のバインドは応用が多そう。頭を柔らかく。
+
+### 1-10 : [コンポーネントの基本 v3 en](https://v3.vuejs.org/guide/component-basics.html)
+
+- [日本語\_V2](https://jp.vuejs.org/v2/guide/components.html)
+
+1. 基本 ～ なんかちょっと難しい。親→子への値設定は、まぁなんか普通に変数渡す感じ。

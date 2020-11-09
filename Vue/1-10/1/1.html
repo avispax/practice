@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="1.css" />
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <title>Vue : 1-10 : コンポーネントの基本</title>
+</head>
+
+<body>
+  <div id="el">
+    <h1>コンポーネントの基本</h1>
+    <h2>基本例</h2>
+
+    <div>この辺からCDNがVue3用に変わったから注意。</div>
+
+    <button-counter></button-counter>
+
+    <h2>Reusing</h2>
+
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+
+    <h3>ちなみにVue2では data は関数だった。Vue3では違うよ。</h3>
+
+    <h2>propを使用した子コンポーネントへのデータの受け渡し</h2>
+    <h3>まぁまずは基本形</h3>
+    <blog-post title="test title1"></blog-post>
+    <blog-post title="aaa"></blog-post>
+    <blog-post title="bbb"></blog-post>
+
+    <h3>普通は配列とかでやるよね。</h3>
+    <blog-post v-for="post in posts" :key="post.id" :title="post.title"></blog-post>
+
+    <h2>単一のルート要素 : V2のみ？</h2>
+    <div>たくさんの要素とかめんどくさい時はこう↓</div>
+    <bp2 v-for="post in posts" :key="post.id" :post="post"></bp2>
+
+    <h2>子コンポーネントイベントのリスニング</h2>
+    <div v-bind:style="{ fontSize: postFontSize + 'em' }">
+      <bp2 v-for="post in posts" :key="post.id" :post="post" @enlarge-text="postFontSize += 0.1"></bp2>
+    </div>
+
+  </div>
+  <script src="1.js"></script>
+</body>
+
+</html>
