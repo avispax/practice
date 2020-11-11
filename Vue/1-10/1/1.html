@@ -28,7 +28,8 @@
     <h3>ちなみにVue2では data は関数だった。Vue3では違うよ。</h3>
 
     <h2>propを使用した子コンポーネントへのデータの受け渡し</h2>
-    <h3>まぁまずは基本形</h3>
+    <h3>まぁまずは基本形。</h3>
+    <div>コンポーネントのprop要素を書いておき、htmlタグのAttributeにそれを書くことで伝搬できる。</div>
     <blog-post title="test title1"></blog-post>
     <blog-post title="aaa"></blog-post>
     <blog-post title="bbb"></blog-post>
@@ -36,11 +37,13 @@
     <h3>普通は配列とかでやるよね。</h3>
     <blog-post v-for="post in posts" :key="post.id" :title="post.title"></blog-post>
 
-    <h2>単一のルート要素 : V2のみ？</h2>
-    <div>たくさんの要素とかめんどくさい時はこう↓</div>
+    <h2>単一のルート要素 : V2日本語版にのみ記述あり。V3のソースでもできるからなんかどっかに独立した記述になったかな。</h2>
+    <div>たくさんの要素とかめんどくさい時は、要素のもとのオブジェクトをそのまま渡そう。</div>
     <bp2 v-for="post in posts" :key="post.id" :post="post"></bp2>
 
     <h2>子コンポーネントイベントのリスニング</h2>
+    <div>子で親の変数を更新するとかそういう。親のdataプロパティを用意して、それを+1するよ。</div>
+    <div>jsのコンポーネントで生成しているbutton要素はemiｔ()で上に飛ばして、親（v-for）のクリックイベントが拾うよ。</div>
     <div v-bind:style="{ fontSize: postFontSize + 'em' }">
       <bp2 v-for="post in posts" :key="post.id" :post="post" @enlarge-text="postFontSize += 0.1"></bp2>
     </div>
