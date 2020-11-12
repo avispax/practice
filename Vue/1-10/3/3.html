@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="3.css" />
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <title>Vue : 1-10-3 : コンポーネントの基本 : コンポーネントでv-modelを使う</title>
+</head>
+
+<body>
+  <div id="el">
+    <h1>コンポーネントの基本</h1>
+    <h2>Using v-model on Components : コンポーネントでv-modelを使う</h2>
+    <h3>イベントをカスタムするとインプットもカスタマイズできるよ。v-modelを使って。</h3>
+    <div>inputとv-modelって、実際はvalue + event って分解できるから、ホントにそう書くよ。</div>
+    <div>なので、v-modelもそう書いてみようぜ↓</div>
+    <my-custom v-model="searchText"></my-custom>
+
+    <div>{{ searchText }}</div>
+
+    <div>jsの「modelValue」って固定？変えたら動かないんだけども。</div>
+
+    <h3>ここからVue3英語版のみの記述</h3>
+    <div>getter/setterが定義できます。的な。</div>
+    
+
+  </div>
+  <script src="3.js"></script>
+</body>
+
+</html>
