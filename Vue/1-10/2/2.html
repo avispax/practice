@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="2.css" />
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <title>Vue : 1-10-2 : コンポーネントの基本 : 子コンポーネントイベントのリスニング</title>
+</head>
+
+<body>
+  <div id="el">
+    <h1>コンポーネントの基本</h1>
+    <h2>子コンポーネントのイベントのリスニング</h2>
+    <h3>v3（英語）限定、なんかlist emitted events の小窓。</h3>
+    <div>emitsプロパティにはリスト化してコンポーネント定義できます。これでvalidateとかできる。</div>
+    <div>詳細はあとで出てくるらしい。とりあえずemits[]って書いただけだと恩恵はない。</div>
+    <div>気にせず次へ。</div>
+    <div v-bind:style="{ fontSize: postFontSize + 'em' }">
+      <blog-post v-for="post in posts" :key="post.id" :post="post" @enlarge-text="postFontSize += 0.1"></blog-post>
+    </div>
+
+    <h2>Emitting a Value With an Event.イベントと値を送出する。</h2>
+    <h3>基本</h3>
+    <div>つまり引数を渡すってことらしい。</div>
+    <div>渡す側は第2引数を使用します。</div>
+    <div>受け取る側は「$event」と書きます。</div>
+    <div v-bind:style="{ fontSize: postFontSize2 + 'px' }">
+      <bp2 v-for="post in posts" :key="post.id" :post="post" @enlarge-text="postFontSize2 += $event"></bp2>
+    </div>
+
+    <h3>関数化してる場合は関数パラメータになりますよ。とのこと。</h3>
+    <div>メソッドを書く位置はDataの中だった。コンポーネントの中に書いても動かない。どういうことなんだろうか。</div>
+    <div>いや、そういえば、コンポーネントはjsのアタマに書いて、app.create()の中に色々書いてたな。vue2。</div>
+    <div v-bind:style="{ fontSize: postFontSize3 + 'px' }">
+      <bp3 v-for="post in posts" :key="post.id" :post="post" @enlarge-text="myFunc"></bp3>
+    </div>
+
+  </div>
+  <script src="2.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+html,
+body {
+  margin: 5px;
+  padding: 0;
+  background-color: silver;
+}
+
+h1 {
+  border-bottom: 4px cornflowerblue solid;
+}
+
+h2 {
+  border-left: 5px cornflowerblue double;
+  border-bottom: 1px cornflowerblue solid;
+}
+
+h3 {
+  border-left: 1px cornflowerblue solid;
+  border-bottom: 1px cornflowerblue solid;
+}
+
+.static {
+  background-color: cornflowerblue;
+  margin-bottom: 4em;
+}
+
+.fontRed {
+  color: red;
+}
+
+.fontBlue {
+  color: blue;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.fontGreenYellow {
+  color: greenyellow;
+}
+
+.fontUnderline {
+  text-decoration: underline;
+}

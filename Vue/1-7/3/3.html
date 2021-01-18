@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="3.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue : 1-7-3 : リストレンダリング</title>
+  </head>
+
+  <body>
+    <div id="el">
+      <h1>v-for その3</h1>
+      <h2>コンポーネントとの絡み</h2>
+      <h3>keyとか必須だからな。とのこと。</h3>
+
+      <my-component
+        v-for="(item, index) in items"
+        :msg="item.msg"
+        :index="index"
+        :key="item.id"
+      ></my-component>
+    </div>
+
+    <div>
+      公式の例ではliタグにis="todo-item"とかやってるけど、liがアレだからだよ。とのこと。
+    </div>
+
+    <script src="3.js"></script>
+  </body>
+</html>

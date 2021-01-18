@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="2.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue : 1-8-2 : イベントハンドリング</title>
+  </head>
+
+  <body>
+    <div id="el">
+      <h1>イベントハンドリング</h1>
+      <h2>イベント修飾子</h2>
+      <div>
+        DOMであれこれするのはやめよう。Vueにはv-onディレクティブ用のイベント修飾子があるよ！
+      </div>
+      <ul>
+        <li>.stop</li>
+        <li>.prevent</li>
+        <li>.capture</li>
+        <li>.self</li>
+        <li>.once</li>
+        <li>.passive</li>
+      </ul>
+
+      <div class="h3area">
+        <h3>例1:.stopがないとき。重なっている要素にイベントが伝搬する。</h3>
+        <div class="border111" @click="doThis('div1')">
+          div1
+          <div class="border111" @click="doThis('div2')">
+            div2
+            <div @click="doThis('ppp')" class="border111">Click Me！</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h3area">
+        <h3>例1:.stopがあるとき。伝搬せず。自分のみ。</h3>
+        <div class="border111" @click="doThis('div1')">
+          div1
+          <div class="border111" @click="doThis('div2')">
+            div2
+            <div @click.stop="doThis('ppp')" class="border111">Click Me!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h3area">
+        <h3>.stopその2 : X:{{x}}, Y:{{y}}</h3>
+        <div class="border111" @mousemove="mousePos">
+          マウスを乗せるのじゃ
+          <span @mousemove.stop>ここは効かぬのじゃ</span>
+        </div>
+      </div>
+
+      <div class="h3area">
+        <h3>.prevent : リンクとか飛ばさなくしたりするよ</h3>
+        <a @click.prevent href="https://www.google.co.jp">Google</a>
+      </div>
+
+      <div class="h3area">
+        <h3>メソッドチェーン : .stop+.prevent : 合成できるよ</h3>
+        <div class="border111" @click="doThis('div')">
+          div
+          <div
+            @click.stop.prevent="doThis('a')"
+            href="https://www.google.co.jp"
+          >
+            click -> Google
+          </div>
+        </div>
+      </div>
+
+      <div class="h3area">
+        <h3>
+          .capture :
+          htmlのルートから辿ってくる機能だよ。あんまり使わないらしいよ。親側に「.capture」って書くんだよ。なんでやねん。
+        </h3>
+        <div class="border111" @click.capture="doThis('div1')">
+          div1
+          <div @click="doThis('div2')">div2</div>
+        </div>
+      </div>
+
+      <div class="h3area">
+        <h3>
+          .self :
+          全部の要素にself付けたら、まぁそういう動きになった。1箇所だけだと前後のやつが微妙に動いたりする。
+        </h3>
+        <div class="border111" @click.self="doThis('div1')">
+          div1です。self付き。
+          <div class="border111" @click.self="doThis('div2')">
+            div2 です。self付き。
+            <div class="border111" @click.self="doThis('div3')">
+              div3 self付き。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h3area">
+        <h3>.once : そのまま。コンポーネントでも行けるらしいぞ</h3>
+        <button @click.once="doThis('once')">.once</button>
+      </div>
+
+      <div class="h3area">
+        <h3>
+          .passive :
+          どこかでpreventDefaultとかがあったとしても無視してくれるらしいぞ。モバイルで有効。
+        </h3>
+      </div>
+    </div>
+    <script src="2.js"></script>
+  </body>
+</html>

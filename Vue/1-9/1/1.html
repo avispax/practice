@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="1.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <title>Vue : 1-9 : フォーム入力バインディング</title>
+</head>
+
+<body>
+  <div id="el">
+    <h1>フォーム入力バインディング</h1>
+    <h2>基本</h2>
+
+    <h3>text</h3>
+    <input v-model="msg" placeholder="edit me" />
+    <p>Message is : {{ msg }}</p>
+
+    <h3>textarea</h3>
+    <textarea v-model="msg2" placeholder="add multiple lines."></textarea>
+    <p style="white-space: pre-line;">Message is : {{ msg2 }}</p>
+    <div>textarea は 単純な{{ xxx }} は効かないから、v-modelでやってね、とのこと。</div>
+
+    <h3>checkbox</h3>
+    <input type="checkbox" v-model="checked" name="checkbox" id="checkbox" />
+    <label for="checkbox">{{checked}}</label>
+
+    <h3>checkbox(multi)</h3>
+    <input type="checkbox" id="aaa" v-model="checkMulti" value="aaa">
+    <label for="aaa">aaa</label>
+    <input type="checkbox" id="bbb" v-model="checkMulti" value="bbb">
+    <label for="bbb">bbb</label>
+    <input type="checkbox" id="ccc" v-model="checkMulti" value="ccc">
+    <label for="ccc">ccc</label>
+    <div>Checked : {{ checkMulti }}</div>
+
+    <h3>radio</h3>
+    <input type="radio" value="value-One" id="one" v-model="radio" />
+    <label for="one">One</label>
+    <input type="radio" value="value-Two" id="two" v-model="radio" />
+    <label for="two">Two</label>
+    <div>Picked: {{ radio }}</div>
+
+    <h3>select(single)</h3>
+    <select v-model="selected">
+      <option disabled value="">なんか選べ</option>
+      <option value="value1">A</option>
+      <option value="value2">B</option>
+      <option value="value3">C</option>
+    </select>
+    <div>selected: {{ selected }}</div>
+    <div>選択項目で初期値の設定に失敗したら、select欄は未選択になるよ。これだとイベント出ないので、上の「なんか選べ」欄みたいにdisabledな選択肢を追加するのがオススメ。</div>
+
+    <h3>select(multi)</h3>
+    <select v-model="selected2" multiple>
+      <option value="value1">A</option>
+      <option value="value2">B</option>
+      <option value="value3">C</option>
+    </select>
+    <div>selected: {{ selected2 }}</div>
+
+    <h3>v-for ダイナミックレンダリング</h3>
+    <select v-model="selected3">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <div>selected: {{ selected3 }}</div>
+
+  </div>
+  <script src="1.js"></script>
+</body>
+
+</html>
