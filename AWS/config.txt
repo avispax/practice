@@ -1,0 +1,6 @@
+# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+Host AWS-EC2-omy-dev1-instance01
+    HostName login.ikebukuroad.work
+    User ec2-user
+    Port 22
+    IdentityFile F:\work\tool\omy-dev1-aws-keypair.pem
